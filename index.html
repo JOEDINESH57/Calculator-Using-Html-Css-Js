@@ -1,11 +1,143 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>calculator</title>
+<style>
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-image:url("https://media.istockphoto.com/id/1419844586/vector/stem-blue-horizontal-frame-vector-education-bright-illustration.jpg?s=612x612&w=0&k=20&c=-A1eYLYulujNsiM26lkVy7qMT_Hp82N5EtKHSFRmigk=") ;
+}
+h1{
+   
+    font-weight: 100;
+    font-size: 4em;
+    font-family: cursive;
+    
+}
+#display{
+    font-size: 3em;
+    font-family: cursive;
+    text-align: right;
+    background-color:whitesmoke;
+}
+
+input{
+    width: 100%;
+    padding: 20px;
+    font-size: large;
+}
+.Calculator{
+    width: 350px;
+    border: rgb(0, 153, 255) outset 2px;
+}
+.buttons{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    
+}
+button{
+    font-size: 1.5em;
+    border: none;
+    padding: 20px;
+    background-color: black;
+    color: white;
+    font-family: cursive;
+    cursor: pointer;
+    transition: background 0.2s;
+   
+}
+button:hover{
+    background-color:white;
+    color:black;
+}
+.btn1{
+    background-color: orangered;
+}
+
+</style>
 </head>
 <body>
-    <h1> Hi I am JOE</h1>
+    <h1>Calculator</h1>
+    <div class="Calculator">
+        <div>
+            <input type="text" id="display" readonly>
+        </div>
+        <div class="buttons">
+            <button class="btn1" onclick="clearDisplay()">AC</button>
+            <button class="btn"  onclick="backspace()">&larr;</button>
+            <button class="btn" onclick="appendToDisplay('%')">%</button>
+            <button class="btn" onclick="appendToDisplay('/')">&div;</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button class="btn" onclick="appendToDisplay('*')">X</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button class="btn" onclick="appendToDisplay('+')">+</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button class="btn" onclick="appendToDisplay('-')">-</button>
+            <button  onclick="zeroDisplay()">C</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button class="btn" onclick="calculate()">=</button>
+
+
+
+
+
+        </div>
+
+    </div>
+    <script>
+        let displayValue= '';
+
+        function appendToDisplay(value){
+            displayValue += value;
+            document.getElementById('display').value = displayValue;
+        }
+        function clearDisplay()
+        {
+            displayValue='';
+            document.getElementById('display').value = '';
+        }
+        function zeroDisplay()
+        {
+            displayValue='0';
+            document.getElementById('display').value = displayValue;
+        }
+        function calculate()
+        {
+            try{
+                const res = eval(displayValue);
+                displayValue = res;
+                document.getElementById('display').value = displayValue;
+            }
+            catch (error){
+                displayValue = 'Error'
+                document.getElementById('display').value= displayValue;
+
+            }
+        }
+        
+        function backspace()
+        {
+            const v = displayValue.targer.innerText
+           
+            document.getElementById('display').value = v;
+
+        }
+
+    </script>
+    
 </body>
 </html>
